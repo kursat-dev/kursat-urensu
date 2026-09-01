@@ -33,6 +33,10 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
   formatDetection: { email: false, address: false, telephone: false },
+  // Google Search Console site ownership. Next.js renders this as
+  // <meta name="google-site-verification" content="..." /> in <head>.
+  // Public by design — it is not a secret and belongs in source.
+  verification: { google: "eHZ0DJIVNgqzBAl4Y5i9Axi4pqdcMZigU1rG-vWJMZw" },
 };
 
 export const viewport: Viewport = {
