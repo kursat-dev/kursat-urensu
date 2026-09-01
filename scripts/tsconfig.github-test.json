@@ -1,0 +1,14 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "module": "node16",
+    "moduleResolution": "node16",
+    "jsx": "react-jsx",
+    "outDir": "../.github-test-build",
+    "rootDir": "..",
+    "noEmit": false,
+    "incremental": false,
+    "plugins": []
+  },
+  "include": ["../lib/**/*.ts"]
+}

@@ -1,0 +1,48 @@
+@layer theme, base, components, utilities;
+
+/* Tailwind without Preflight: the design system below owns the base layer, so
+   resetting it again would change the imported design. */
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "../styles/modernist.css";
+
+@source "../app";
+@source "../components";
+
+/* ── page-level styles, carried over verbatim from the design ───────────── */
+body { background: var(--color-bg); }
+@keyframes kuFade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+a { color: var(--color-accent-700); }
+a:hover { color: var(--color-accent-800); }
+header nav a[aria-current="page"] { color: var(--color-accent-700) !important; }
+@media (max-width: 880px) {
+  .ku-2col { grid-template-columns: 1fr !important; }
+  .ku-writing-row { grid-template-columns: 1fr !important; gap: 6px !important; }
+}
+@media (max-width: 760px) {
+  header > div { flex-wrap: wrap; row-gap: 12px; }
+  header nav { order: 3; width: 100%; gap: 16px !important; overflow-x: auto; }
+  header nav a { white-space: nowrap; }
+}
+@media (max-width: 600px) {
+  .ku-timeline-row { grid-template-columns: 40px minmax(0,1fr) !important; }
+}
+
+/* ── additions for the production app ───────────────────────────────────── */
+
+/* Self-hosted Archivo (next/font) replaces the Google Fonts request. */
+:root {
+  --font-heading: var(--font-archivo), system-ui, sans-serif;
+  --font-body: var(--font-archivo), system-ui, sans-serif;
+}
+
+/* The skip link is styled with Tailwind utilities in app/layout.tsx. */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

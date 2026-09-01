@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kürşat Ürensü — Portfolyo</title>
+<link rel="stylesheet" href="modernist.css">
+<style>
+  body { background: var(--color-bg); }
+  @keyframes kuFade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  a { color: var(--color-accent); }
+  a:hover { color: var(--color-accent-700); }
+  header nav a[aria-current="page"] { color: var(--color-accent) !important; }
+  @media (max-width: 880px) {
+    .ku-2col { grid-template-columns: 1fr !important; }
+    .ku-writing-row { grid-template-columns: 1fr !important; gap: 6px !important; }
+  }
+  @media (max-width: 760px) {
+    header > div { flex-wrap: wrap; row-gap: 12px; }
+    header nav { order: 3; width: 100%; gap: 16px !important; overflow-x: auto; }
+    header nav a { white-space: nowrap; }
+  }
+  @media (max-width: 600px) {
+    .ku-timeline-row { grid-template-columns: 40px minmax(0,1fr) !important; }
+  }
+</style>
+<style>
+  [hidden] { display: none !important; }
+</style>
+<script src="app.js" defer></script>
+</head>
+<body>
+<div style="min-height:100vh;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body)">
+
+  <header style="position:sticky;top:0;z-index:20;background:var(--color-bg);border-bottom:2px solid var(--color-divider)">
+    <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:clamp(12px,2vw,28px);padding:14px clamp(20px,5vw,56px)">
+      <a href="#" onclick="go(event, 'home')" style="font-family:var(--font-heading);font-weight:800;font-size:17px;letter-spacing:-0.02em;color:var(--color-text);text-decoration:none;margin-right:auto;white-space:nowrap">Kürşat Ürensü</a>
+      <nav style="display:flex;flex-wrap:wrap;gap:clamp(10px,1.6vw,22px);font-size:14px">
+        <a href="#" onclick="go(event, 'home')" data-nav="home" style="color:var(--color-text);text-decoration:none">Ana Sayfa</a>
+        <a href="#" onclick="go(event, 'about')" data-nav="about" style="color:var(--color-text);text-decoration:none">Hakkında</a>
+        <a href="#" onclick="go(event, 'projects')" data-nav="projects" style="color:var(--color-text);text-decoration:none">Projeler</a>
+        <a href="#" onclick="go(event, 'experience')" data-nav="experience" style="color:var(--color-text);text-decoration:none">Deneyim</a>
+        <a href="#" onclick="go(event, 'achievements')" data-nav="achievements" style="color:var(--color-text);text-decoration:none">Başarılar</a>
+        <a href="#" onclick="go(event, 'writing')" data-nav="writing" style="color:var(--color-text);text-decoration:none">Yazılar</a>
+      </nav>
+      <a href="#" onclick="go(event, 'contact')" class="btn btn-primary" style="white-space:nowrap">İletişime Geç</a>
+    </div>
+  </header>
+
+  <main id="ku-main" style="animation:kuFade 420ms ease both">
+
+  <div class="ku-page" data-page="home" hidden>
+  <section>
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(56px,9vw,120px) clamp(20px,5vw,56px) clamp(48px,7vw,96px);display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:end" class="ku-2col">
+      <div>
+        <p style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 clamp(20px,3vw,32px)">Software Developer · Entrepreneur</p>
+        <h1 style="font-size:clamp(46px,7.4vw,104px);line-height:0.94;letter-spacing:-0.035em;margin:0 0 clamp(20px,3vw,28px);text-wrap:balance">Kürşat<br>Ürensü</h1>
+        <p style="font-family:var(--font-heading);font-weight:800;font-size:clamp(15px,1.5vw,19px);letter-spacing:-0.01em;margin:0 0 20px">Software Developer · Entrepreneur · Product Builder</p>
+        <p style="font-size:clamp(16px,1.7vw,20px);line-height:1.5;max-width:44ch;color:var(--color-neutral-800);margin:0 0 clamp(28px,4vw,40px);text-wrap:pretty">Fikirleri araştırıyor, ürünlere dönüştürüyor ve gerçek dünyada test ediyorum. Yazılım geliştiriyor, ürün kuruyor ve gerçek problemleri çözen işler çıkarıyorum.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px">
+          <a href="#" onclick="go(event, 'projects')" class="btn btn-primary">Projeleri Gör →</a>
+          <a href="#" onclick="go(event, 'about')" class="btn btn-secondary">Hakkımda</a>
+        </div>
+      </div>
+      <figure style="margin:0">
+        <div class="grayscale" style="border:2px solid var(--color-text)">
+          <img src="assets/kursat.jpeg" alt="Kürşat Ürensü" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block">
+        </div>
+        <figcaption style="font-family:var(--font-body);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;margin-top:10px;color:var(--color-neutral-600)">Trabzon, Türkiye</figcaption>
+      </figure>
+    </div>
+    <hr class="hr" style="margin:0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,56px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
+        <div style="padding:clamp(20px,3vw,32px) 0;border-right:1px solid var(--color-divider);padding-right:24px">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:clamp(28px,3.4vw,44px);line-height:1">01</div>
+          <p style="margin:6px 0 0;font-size:13px;color:var(--color-neutral-700)">Maestrobot 2026 Ankara<br>Yapay Zekâ Girişimcilik — Bölge Birinciliği</p>
+        </div>
+        <div style="padding:clamp(20px,3vw,32px) 24px;border-right:1px solid var(--color-divider)">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:clamp(28px,3.4vw,44px);line-height:1">8 ay</div>
+          <p style="margin:6px 0 0;font-size:13px;color:var(--color-neutral-700)">DentalPrices'ta Jr. Developer olarak gerçek ürün deneyimi</p>
+        </div>
+        <div style="padding:clamp(20px,3vw,32px) 24px;border-right:1px solid var(--color-divider)">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:clamp(28px,3.4vw,44px);line-height:1">5</div>
+          <p style="margin:6px 0 0;font-size:13px;color:var(--color-neutral-700)">Kurulan ve geliştirilen ürün: ZConnect, ZMeet, YÖN, ZMovie, ZMeet entegrasyonları</p>
+        </div>
+        <div style="padding:clamp(20px,3vw,32px) 0 clamp(20px,3vw,32px) 24px">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:clamp(28px,3.4vw,44px);line-height:1">12. sınıf</div>
+          <p style="margin:6px 0 0;font-size:13px;color:var(--color-neutral-700)">Robotekno Koleji — Elektroteknik / Mesleki ve Teknik Anadolu Lisesi</p>
+        </div>
+      </div>
+    </div>
+    <hr class="hr" style="margin:0">
+  </section>
+
+  <section style="border-bottom:2px solid var(--color-divider)">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(20px,5vw,56px)">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:16px;margin-bottom:clamp(28px,4vw,48px)">
+        <h2 style="font-size:clamp(30px,4vw,52px);letter-spacing:-0.03em;margin:0">Şu An Geliştirdiklerim</h2>
+        <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-neutral-600)">Currently Building</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px;background:var(--color-divider)">
+        <article style="background:var(--color-bg);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <span style="font-family:var(--font-heading);font-weight:800;font-size:26px;letter-spacing:-0.02em">YÖN</span>
+            <span class="tag tag-accent">Building</span>
+          </div>
+          <p style="margin:0;font-size:15px;line-height:1.55;color:var(--color-neutral-800);flex:1">Girişimcilerin girişimlerini değerlendirmelerine, geliştirmelerine, bilgi edinmelerine ve diğer girişimcilerle network kurmalarına yardımcı olmayı amaçlayan girişimcilik platformu.</p>
+          <a href="#" onclick="go(event, 'detail')" class="btn btn-ghost" style="align-self:flex-start;padding-inline:0">Projeyi incele →</a>
+        </article>
+        <article style="background:var(--color-bg);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <span style="font-family:var(--font-heading);font-weight:800;font-size:26px;letter-spacing:-0.02em">ZMovie</span>
+            <span class="tag tag-outline">In Development</span>
+          </div>
+          <p style="margin:0;font-size:15px;line-height:1.55;color:var(--color-neutral-800);flex:1">Film festivalleri ve sinema içeriklerinin yönetimi, arşivlenmesi ve sunulması amacıyla geliştirilen platform. Özdemir Bayraktar Bilim Merkezi'nden Recep Çolak ile işbirliği içerisinde geliştiriliyor; Kültür ve Turizm Bakanlığı tarafındaki görüşmeler devam ediyor.</p>
+        </article>
+        <article style="background:var(--color-bg);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <span style="font-family:var(--font-heading);font-weight:800;font-size:26px;letter-spacing:-0.02em">DentalPrices</span>
+            <span class="tag tag-neutral">Active</span>
+          </div>
+          <p style="margin:0;font-size:15px;line-height:1.55;color:var(--color-neutral-800);flex:1">Klinikler ve hastaları bir araya getiren DentalPrices ekosisteminde Jr. Developer olarak geliştirici deneyimi. ZMeet entegrasyonu, bug fixing ve ürün geliştirme süreçlerinde görev alıyor.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom:2px solid var(--color-divider)">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(20px,5vw,56px)">
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:clamp(24px,4vw,64px);margin-bottom:clamp(24px,3vw,40px)" class="ku-2col">
+        <div>
+          <h2 style="font-size:clamp(30px,4vw,52px);letter-spacing:-0.03em;margin:0 0 10px">Yolculuk</h2>
+          <p style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-neutral-600);margin:0">Story · 2024 → 2026</p>
+        </div>
+        <p style="font-size:clamp(16px,1.6vw,19px);line-height:1.55;color:var(--color-neutral-800);margin:0;max-width:56ch;text-wrap:pretty">Bir fikirle başladı, bir ürüne dönüştü, sonra etkinlikler, yarışmalar ve gerçek ekiplerle devam etti. Aşağıdaki sekiz adım bugüne kadarki hattı gösteriyor.</p>
+      </div>
+      <div>
+        <div class="ku-timeline-row" style="display:grid;grid-template-columns:clamp(56px,7vw,110px) minmax(0,1fr);gap:clamp(16px,3vw,40px);padding:clamp(22px,3vw,34px) 0;border-top:2px solid var(--color-divider)">
+          <span style="font-family:var(--font-heading);font-weight:800;font-size:clamp(15px,1.4vw,18px);color:var(--color-accent-700)">01</span>
+          <div>
+            <h3 style="font-size:clamp(21px,2.4vw,30px);letter-spacing:-0.02em;margin:0 0 8px">Fikir — ZConnect</h3>
+            <p style="margin:0;max-width:64ch;font-size:15px;line-height:1.6;color:var(--color-neutral-800)">Instagram'ın Türkiye'de erişime kapatılmasının ardından iletişim altyapısına alternatif oluşturma fikri. Yolculuğu başlatan fikir.</p>
+          </div>
+        </div>
+        <div class="ku-timeline-row" style="display:grid;grid-template-columns:clamp(56px,7vw,110px) minmax(0,1fr);gap:clamp(16px,3vw,40px);padding:clamp(22px,3vw,34px) 0;border-top:1px solid var(--color-divider)">
+          <span style="font-family:var(--font-heading);font-weight:800;font-size:clamp(15px,1.4vw,18px);color:var(--color-accent-700)">02</span>
+          <div>
+            <h3 style="font-size:clamp(21px,2.4vw,30px);letter-spacing:-0.02em;margin:0 0 8px">İlk Ürün — ZMeet</h3>
+            <p style="margin:0;max-width:64ch;font-size:15px;line-height:1.6;color:var(--color-neutral-800)">ZConnect fikrinin ardından geliştirilen sanal toplantı ve görüşme platformu. İlk gerçek ürün deneyimi.</p>
+          </div>
+        </div>
+        <div class="ku-timeline-row" style="display:grid;grid-template-columns:clamp(56px,7vw,110px) minmax(0,1fr);gap:clamp(16px,3vw,40px);padding:clamp(22px,3vw,34px) 0;border-top:1px solid var(--color-divider)">
+          <span style="font-family:var(--font-heading);font-weight:800;font-size:clamp(15px,1.4vw,18px);color:var(--color-accent-700)">03</span>
+          <div>
+            <h3 style="font-size:clamp(21px,2.4vw,30px);letter-spacing:-0.02em;margin:0 0 8px">İlk Sahne — GDG DevFest Trabzon 2025</h3>
+            <p style="margin:0;max-width:64ch;font-size:15px;line-height:1.6;color:var(--color-neutral-800)">Ürünü ilk kez topluluk önüne çıkarmak: stand deneyimi ve ilk kullanıcı geri bildirimleri.</p>
+          </div>
+        </div>
+        <div class="ku-timeline-row" style="display:grid;grid-template-columns:clamp(56px,7vw,110px) minmax(0,1fr);gap:clamp(16px,3vw,40px);padding:clamp(22px,3vw,34px) 0;border-top:1px solid var(--color-divider)">
+          <span style="font-family:var(--font-heading);font-weight:800;font-size:clamp(15px,1.4vw,18px);color:var(--color-accent-700)">04</span>
+          <div>
+            <h3 style="font-size:clamp(21px,2.4vw,30px);letter-spacing:-0.02em;margin:0 0 8px">Network Büyüyor</h3>
+            <p style="margin:0;max-width:64ch;font-size:15px;line-height:1.6;color:var(--color-neutral-800)">TEDx Trabzon Üniversitesi ve GDG DevFest İstanbul: farklı şehirlerde, farklı ekosistemlerde tanışmalar.</p>
+          </div>
+        </div>
+        <div class="ku-timeline-row" style="display:grid;grid-template-columns:clamp(56px,7vw,110px) minmax(0,1fr);gap:clamp(16px,3vw,40px);padding:clamp(22px,3vw,34px) 0;border-top:1px solid var(--color-divider)">
+          <span style="font-family:var(--font-heading);font-weight:800;font-size:clamp(15px,1.4vw,18px);color:var(--color-accent-700)">05</span>
+          <div>
+            <h3 style="font-size:clamp(21px,2.4vw,30px);letter-spacing:-0.02em;margin:0 0 8px">Yarışmalar ve Topluluklar</h3>
+            <p style="margin:0;max-width:64ch;font-size:15px;line-height:1.6;color:var(--color-neutral-800)">Trabzon Astro TUA Hackathon ve Rafora Beyond Code: kısıtlı sürede üretmeyi ve ekip içinde çalışmayı test etmek.</p>
+          </div>
+        </div>
+        <div class="ku-timeline-row" style="display:grid;grid-template-columns:clamp(56px,7vw,110px) minmax(0,1fr);gap:clamp(16px,3vw,40px);padding:clamp(22px,3vw,34px) 0;border-top:1px solid var(--color-divider);background:var(--color-accent-100)">
+          <span style="font-family:var(--font-heading);font-weight:800;font-size:clamp(15px,1.4vw,18px);color:var(--color-accent-700);padding-left:clamp(8px,1.5vw,16px)">06</span>
+          <div style="padding-right:clamp(8px,1.5vw,16px)">
+            <h3 style="font-size:clamp(21px,2.4vw,30px);letter-spacing:-0.02em;margin:0 0 8px">Tanınma — Maestrobot 2026 Ankara</h3>
+            <p style="margin:0;max-width:64ch;font-size:15px;line-height:1.6;color:var(--color-neutral-800)">ZMeet ile Yapay Zekâ Girişimcilik kategorisinde bölge birinciliği.</p>
+          </div>
+        </div>
+        <div class="ku-timeline-row" style="display:grid;grid-template-columns:clamp(56px,7vw,110px) minmax(0,1fr);gap:clamp(16px,3vw,40px);padding:clamp(22px,3vw,34px) 0;border-top:1px solid var(--color-divider)">
+          <span style="font-family:var(--font-heading);font-weight:800;font-size:clamp(15px,1.4vw,18px);color:var(--color-accent-700)">07</span>
+          <div>
+            <h3 style="font-size:clamp(21px,2.4vw,30px);letter-spacing:-0.02em;margin:0 0 8px">Gerçek Ürün Deneyimi — DentalPrices</h3>
+            <p style="margin:0;max-width:64ch;font-size:15px;line-height:1.6;color:var(--color-neutral-800)">Jr. Developer olarak yaklaşık 8 ay: ZMeet entegrasyonu, bug fixing ve ürün geliştirme süreçleri.</p>
+          </div>
+        </div>
+        <div class="ku-timeline-row" style="display:grid;grid-template-columns:clamp(56px,7vw,110px) minmax(0,1fr);gap:clamp(16px,3vw,40px);padding:clamp(22px,3vw,34px) 0;border-top:1px solid var(--color-divider);border-bottom:2px solid var(--color-divider)">
+          <span style="font-family:var(--font-heading);font-weight:800;font-size:clamp(15px,1.4vw,18px);color:var(--color-accent-700)">08</span>
+          <div>
+            <h3 style="font-size:clamp(21px,2.4vw,30px);letter-spacing:-0.02em;margin:0 0 8px">Yeni Girişimler — YÖN, ZMovie</h3>
+            <p style="margin:0;max-width:64ch;font-size:15px;line-height:1.6;color:var(--color-neutral-800)">Araştırmayla başlayan iki yeni ürün: biri girişimcilik ekosistemi için, diğeri sinema ve festival içerikleri için.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div data-if="showGithub">
+  <section style="border-bottom:2px solid var(--color-divider)">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(20px,5vw,56px)">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:16px;margin-bottom:clamp(24px,3vw,40px)">
+        <h2 style="font-size:clamp(30px,4vw,52px);letter-spacing:-0.03em;margin:0">Kod</h2>
+        <a href="https://github.com/kursat-dev" style="font-size:14px;font-family:var(--font-heading);font-weight:800">github.com/kursat-dev →</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px;background:var(--color-divider);border:2px solid var(--color-divider)">
+        <div style="background:var(--color-bg);padding:clamp(20px,2.5vw,28px)">
+          <p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-neutral-600);margin:0 0 14px">Katkı grafiği · son 12 ay</p>
+          <div style="display:grid;grid-template-columns:repeat(26,1fr);grid-auto-rows:1fr;gap:3px" id="ku-contrib"></div>
+          <p style="font-size:12px;color:var(--color-neutral-600);margin:14px 0 0">Gerçek veri GitHub API ile bağlanacak.</p>
+        </div>
+        <div style="background:var(--color-bg);padding:clamp(20px,2.5vw,28px);display:flex;flex-direction:column;gap:14px">
+          <p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-neutral-600);margin:0">Öne çıkan repolar</p>
+          <div style="display:flex;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--color-divider)">
+            <span style="font-family:var(--font-heading);font-weight:800;font-size:15px">yon-platform</span>
+            <span style="font-size:12px;color:var(--color-neutral-600)">TypeScript · ★ —</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--color-divider)">
+            <span style="font-family:var(--font-heading);font-weight:800;font-size:15px">zmeet</span>
+            <span style="font-size:12px;color:var(--color-neutral-600)">JavaScript · ★ —</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--color-divider)">
+            <span style="font-family:var(--font-heading);font-weight:800;font-size:15px">zmovie</span>
+            <span style="font-size:12px;color:var(--color-neutral-600)">TypeScript · ★ —</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;gap:12px">
+            <span style="font-family:var(--font-heading);font-weight:800;font-size:15px">zconnect-archive</span>
+            <span style="font-size:12px;color:var(--color-neutral-600)">JavaScript · ★ —</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <section style="border-bottom:2px solid var(--color-divider)">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(20px,5vw,56px)">
+      <h2 style="font-size:clamp(30px,4vw,52px);letter-spacing:-0.03em;margin:0 0 clamp(24px,3vw,40px)">2026 — 2027 Hedefleri</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;background:var(--color-divider);border-top:2px solid var(--color-divider);border-left:2px solid var(--color-divider)">
+        <div style="background:var(--color-bg);padding:clamp(20px,2.5vw,30px)"><h4 style="margin:0 0 6px;font-size:17px">GDG DevFest Trabzon</h4><p style="margin:0;font-size:14px;color:var(--color-neutral-700)">Konuşmacı + YÖN standı</p></div>
+        <div style="background:var(--color-bg);padding:clamp(20px,2.5vw,30px)"><h4 style="margin:0 0 6px;font-size:17px">TEDx Trabzon Üniversitesi</h4><p style="margin:0;font-size:14px;color:var(--color-neutral-700)">Konuşmacı</p></div>
+        <div style="background:var(--color-bg);padding:clamp(20px,2.5vw,30px)"><h4 style="margin:0 0 6px;font-size:17px">Maestrobot Azerbaijan</h4><p style="margin:0;font-size:14px;color:var(--color-neutral-700)">Uluslararası katılım</p></div>
+        <div style="background:var(--color-bg);padding:clamp(20px,2.5vw,30px)"><h4 style="margin:0 0 6px;font-size:17px">Yeni hackathonlar</h4><p style="margin:0;font-size:14px;color:var(--color-neutral-700)">Teknoloji yarışmaları</p></div>
+        <div style="background:var(--color-bg);padding:clamp(20px,2.5vw,30px)"><h4 style="margin:0 0 6px;font-size:17px">YÖN</h4><p style="margin:0;font-size:14px;color:var(--color-neutral-700)">Ürün geliştirme ve ilk kullanıcılar</p></div>
+        <div style="background:var(--color-bg);padding:clamp(20px,2.5vw,30px)"><h4 style="margin:0 0 6px;font-size:17px">ZMovie</h4><p style="margin:0;font-size:14px;color:var(--color-neutral-700)">Platform geliştirme</p></div>
+        <div style="background:var(--color-bg);padding:clamp(20px,2.5vw,30px)"><h4 style="margin:0 0 6px;font-size:17px">Üniversite</h4><p style="margin:0;font-size:14px;color:var(--color-neutral-700)">YKS süreci</p></div>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <div class="ku-page" data-page="about" hidden>
+  <section>
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,112px) clamp(20px,5vw,56px)">
+      <p style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 clamp(20px,3vw,32px)">Hakkında</p>
+      <h2 style="font-size:clamp(30px,4.6vw,60px);line-height:1.05;letter-spacing:-0.03em;margin:0 0 clamp(32px,5vw,56px);max-width:26ch;text-wrap:balance">Sadece yazılım yazmayı sevmiyorum. Ne yapılması gerektiğini bulmayı seviyorum.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,72px);border-top:2px solid var(--color-divider);padding-top:clamp(28px,4vw,48px)">
+        <div>
+          <p style="font-size:16px;line-height:1.65;color:var(--color-neutral-800);margin:0 0 18px">Yazılım geliştirmeye ürün tarafından bakarak başladım. Bir şeyi kodlamadan önce neden var olması gerektiğini, kimin kullanacağını ve gerçekten bir problemi çözüp çözmediğini anlamaya çalışıyorum.</p>
+          <p style="font-size:16px;line-height:1.65;color:var(--color-neutral-800);margin:0 0 18px">Bu yaklaşımın ilk sınavı ZConnect oldu. Instagram'ın Türkiye'de erişime kapatılması sonrası iletişim altyapısına alternatif kurma fikriyle çıktı. Sunucu ve operasyon maliyetleri nedeniyle rafa kaldırdım, ama yolculuğu başlatan fikir bu.</p>
+          <p style="font-size:16px;line-height:1.65;color:var(--color-neutral-800);margin:0">Ardından ZMeet geldi: gerçek kullanıcıların girip görüştüğü ilk ürünüm. ZMeet'i etkinliklerde, standlarda ve yarışmalarda kullandım; Maestrobot 2026 Ankara'da Yapay Zekâ Girişimcilik kategorisinde bölge birinciliği getirdi.</p>
+        </div>
+        <div>
+          <p style="font-size:16px;line-height:1.65;color:var(--color-neutral-800);margin:0 0 18px">YÖN ise doğrudan araştırmadan doğdu. "Girişimciler yatırım bulamıyor" hipotezini test etmek için girişimcilerle ve yatırımcılarla görüştüm. Çıkan tablo hipotezden farklıydı: problem çoğu zaman yatırımın kendisinde değil, ona hazırlıkta.</p>
+          <p style="font-size:16px;line-height:1.65;color:var(--color-neutral-800);margin:0 0 18px">Bugün YÖN'ü girişimleri analiz eden bir araçtan, girişimcilerin öğrendiği ve birbirine bağlandığı bir ekosisteme doğru geliştiriyorum. Paralelde ZMovie'yi Özdemir Bayraktar Bilim Merkezi'nden Recep Çolak ile birlikte yürütüyorum.</p>
+          <p style="font-size:16px;line-height:1.65;color:var(--color-neutral-800);margin:0">DentalPrices'ta Jr. Developer olarak çalışmak bunların hepsini bir arada görmemi sağladı: gerçek bir ekip, gerçek kullanıcılar, gerçek bug'lar. Yazılım, ürün ve girişimciliği ayrı işler olarak görmüyorum — aynı işin üç tarafı.</p>
+        </div>
+      </div>
+    </div>
+    <hr class="hr" style="margin:0">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(20px,5vw,56px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:clamp(20px,3vw,48px)">
+        <div><p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-neutral-600);margin:0 0 8px">Odak</p><p style="margin:0;font-size:15px">Web ürünleri, platform geliştirme, kullanıcı araştırması</p></div>
+        <div><p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-neutral-600);margin:0 0 8px">Çalışma biçimi</p><p style="margin:0;font-size:15px">Araştır, hızlı prototiple, gerçek kullanıcıyla test et</p></div>
+        <div><p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-neutral-600);margin:0 0 8px">Konum</p><p style="margin:0;font-size:15px">Trabzon, Türkiye</p></div>
+        <div><p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-neutral-600);margin:0 0 8px">Eğitim</p><p style="margin:0;font-size:15px">Robotekno Koleji — 12. sınıf</p></div>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <div class="ku-page" data-page="projects" hidden>
+  <section>
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(20px,5vw,56px) clamp(32px,4vw,56px)">
+      <p style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 clamp(16px,2vw,24px)">Projeler</p>
+      <h2 style="font-size:clamp(30px,4.6vw,60px);letter-spacing:-0.03em;margin:0 0 16px">Ne kurdum, ne öğrendim</h2>
+      <p style="font-size:17px;line-height:1.55;color:var(--color-neutral-800);max-width:60ch;margin:0">Beş ürün, iki yıl. Her biri bir öncekinin bıraktığı soruyla başladı.</p>
+    </div>
+    <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,56px) clamp(56px,8vw,104px)">
+      <div style="border-top:2px solid var(--color-divider)">
+        <article class="ku-2col" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(20px,4vw,56px);padding:clamp(28px,4vw,48px) 0;border-bottom:1px solid var(--color-divider)">
+          <div>
+            <h3 style="font-size:clamp(26px,3vw,38px);letter-spacing:-0.025em;margin:0 0 10px">YÖN</h3>
+            <span class="tag tag-accent">Building</span>
+            <dl style="margin:20px 0 0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:13px">
+              <dt style="color:var(--color-neutral-600)">Yıl</dt><dd style="margin:0">2026 →</dd>
+              <dt style="color:var(--color-neutral-600)">Rol</dt><dd style="margin:0">Founder · Developer</dd>
+              <dt style="color:var(--color-neutral-600)">Teknoloji</dt><dd style="margin:0">Next.js · TypeScript · Tailwind</dd>
+            </dl>
+          </div>
+          <div>
+            <p style="font-size:16px;line-height:1.6;color:var(--color-neutral-800);margin:0 0 16px;max-width:62ch">Girişimcilerin girişimlerini değerlendirmelerine, geliştirmelerine, bilgi edinmelerine ve diğer girişimcilerle network kurmalarına yardımcı olan platform. Girişimcilerle ve yatırımcılarla yapılan görüşmelerden çıkan bir problem haritası üzerine kuruldu.</p>
+            <a href="#" onclick="go(event, 'detail')" class="btn btn-secondary">Detaylı incele →</a>
+          </div>
+        </article>
+        <article class="ku-2col" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(20px,4vw,56px);padding:clamp(28px,4vw,48px) 0;border-bottom:1px solid var(--color-divider)">
+          <div>
+            <h3 style="font-size:clamp(26px,3vw,38px);letter-spacing:-0.025em;margin:0 0 10px">ZMovie</h3>
+            <span class="tag tag-outline">In Development</span>
+            <dl style="margin:20px 0 0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:13px">
+              <dt style="color:var(--color-neutral-600)">Yıl</dt><dd style="margin:0">2026 →</dd>
+              <dt style="color:var(--color-neutral-600)">Rol</dt><dd style="margin:0">Developer</dd>
+              <dt style="color:var(--color-neutral-600)">İşbirliği</dt><dd style="margin:0">Recep Çolak — Özdemir Bayraktar Bilim Merkezi</dd>
+            </dl>
+          </div>
+          <div>
+            <p style="font-size:16px;line-height:1.6;color:var(--color-neutral-800);margin:0;max-width:62ch">Film festivalleri, film içerikleri, çekim kayıtları, galeriler ve jüri değerlendirme süreçleri gibi alanlarda kullanılmak üzere geliştirilen platform. Kültür ve Turizm Bakanlığı için görüşmeler devam etmektedir.</p>
+          </div>
+        </article>
+        <article class="ku-2col" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(20px,4vw,56px);padding:clamp(28px,4vw,48px) 0;border-bottom:1px solid var(--color-divider)">
+          <div>
+            <h3 style="font-size:clamp(26px,3vw,38px);letter-spacing:-0.025em;margin:0 0 10px">ZMeet</h3>
+            <span class="tag tag-neutral">Eski proje</span>
+            <dl style="margin:20px 0 0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:13px">
+              <dt style="color:var(--color-neutral-600)">Yıl</dt><dd style="margin:0">2025</dd>
+              <dt style="color:var(--color-neutral-600)">Rol</dt><dd style="margin:0">Founder · Developer</dd>
+              <dt style="color:var(--color-neutral-600)">Sonuç</dt><dd style="margin:0">Maestrobot 2026 — bölge birinciliği</dd>
+            </dl>
+          </div>
+          <div>
+            <p style="font-size:16px;line-height:1.6;color:var(--color-neutral-800);margin:0 0 16px;max-width:62ch">ZConnect fikrinin ardından geliştirilen sanal toplantı ve görüşme platformu. GDG DevFest Trabzon 2025, TEDx Trabzon Üniversitesi, GDG DevFest İstanbul ve Maestrobot 2026 Ankara dahil birçok etkinlikte kullanıldı ve sunuldu.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <span class="tag tag-neutral">GDG DevFest Trabzon 2025</span>
+              <span class="tag tag-neutral">TEDx Trabzon Üniversitesi</span>
+              <span class="tag tag-neutral">GDG DevFest İstanbul</span>
+              <span class="tag tag-accent">Maestrobot 2026 Ankara</span>
+            </div>
+          </div>
+        </article>
+        <article class="ku-2col" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(20px,4vw,56px);padding:clamp(28px,4vw,48px) 0;border-bottom:1px solid var(--color-divider)">
+          <div>
+            <h3 style="font-size:clamp(26px,3vw,38px);letter-spacing:-0.025em;margin:0 0 10px">ZConnect</h3>
+            <span class="tag tag-outline">Yolculuğu başlatan fikir</span>
+            <dl style="margin:20px 0 0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:13px">
+              <dt style="color:var(--color-neutral-600)">Yıl</dt><dd style="margin:0">2024</dd>
+              <dt style="color:var(--color-neutral-600)">Rol</dt><dd style="margin:0">Konsept · Araştırma</dd>
+            </dl>
+          </div>
+          <div>
+            <p style="font-size:16px;line-height:1.6;color:var(--color-neutral-800);margin:0;max-width:62ch">ZMeet'ten önce ortaya çıkan konsept. Instagram'ın Türkiye'de erişime kapatılması sonrasında iletişim altyapısına alternatif oluşturma fikrinden doğdu. Sunucu ve operasyon maliyetleri nedeniyle proje rafa kaldırıldı; bıraktığı soru ZMeet'i doğurdu.</p>
+          </div>
+        </article>
+        <article class="ku-2col" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(20px,4vw,56px);padding:clamp(28px,4vw,48px) 0;border-bottom:2px solid var(--color-divider)">
+          <div>
+            <h3 style="font-size:clamp(26px,3vw,38px);letter-spacing:-0.025em;margin:0 0 10px">DentalPrices</h3>
+            <span class="tag tag-neutral">Active</span>
+            <dl style="margin:20px 0 0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:13px">
+              <dt style="color:var(--color-neutral-600)">Yıl</dt><dd style="margin:0">2025 →</dd>
+              <dt style="color:var(--color-neutral-600)">Rol</dt><dd style="margin:0">Jr. Developer</dd>
+              <dt style="color:var(--color-neutral-600)">Süre</dt><dd style="margin:0">~8 ay</dd>
+            </dl>
+          </div>
+          <div>
+            <p style="font-size:16px;line-height:1.6;color:var(--color-neutral-800);margin:0;max-width:62ch">Klinikler ve hastaları bir araya getiren DentalPrices ekosisteminde geliştirici deneyimi. ZMeet entegrasyonu, bug fixing ve ürün geliştirme süreçlerinde görev alıyor.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <div class="ku-page" data-page="detail" hidden>
+  <section>
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(20px,5vw,56px) clamp(32px,4vw,56px)">
+      <a href="#" onclick="go(event, 'projects')" class="btn btn-ghost" style="padding-inline:0;margin-bottom:clamp(24px,3vw,40px)">← Tüm projeler</a>
+      <div style="display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:end" class="ku-2col">
+        <div>
+          <h2 style="font-size:clamp(44px,7vw,96px);line-height:0.95;letter-spacing:-0.035em;margin:0 0 18px">YÖN</h2>
+          <p style="font-size:clamp(17px,1.9vw,22px);line-height:1.5;color:var(--color-neutral-800);max-width:48ch;margin:0">Girişimcilerin girişimlerini değerlendirdiği, geliştirdiği ve birbirine bağlandığı girişimcilik platformu.</p>
+        </div>
+        <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 20px;font-size:13px;border-top:2px solid var(--color-divider);padding-top:16px">
+          <dt style="color:var(--color-neutral-600)">Durum</dt><dd style="margin:0">Building</dd>
+          <dt style="color:var(--color-neutral-600)">Yıl</dt><dd style="margin:0">2026 →</dd>
+          <dt style="color:var(--color-neutral-600)">Rol</dt><dd style="margin:0">Founder · Developer · Araştırma</dd>
+          <dt style="color:var(--color-neutral-600)">Teknoloji</dt><dd style="margin:0">Next.js · TypeScript · Tailwind · shadcn/ui</dd>
+        </dl>
+      </div>
+    </div>
+    <hr class="hr" style="margin:0">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(48px,7vw,96px) clamp(20px,5vw,56px)">
+      <div class="ku-2col" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);gap:clamp(24px,4vw,64px);margin-bottom:clamp(32px,4vw,56px)">
+        <h3 style="font-size:clamp(24px,2.8vw,36px);letter-spacing:-0.025em;margin:0">Hipotez ve araştırma</h3>
+        <div>
+          <p style="font-size:16px;line-height:1.65;color:var(--color-neutral-800);margin:0 0 14px;max-width:62ch">Başlangıç hipotezi netti: <em>"Girişimciler yatırım bulamıyor."</em> Bu hipotezi test etmek amacıyla girişimciler ve yatırımcılarla görüşmeler yapıldı.</p>
+          <p style="font-size:16px;line-height:1.65;color:var(--color-neutral-800);margin:0;max-width:62ch">Görüşmeler sonucunda problemin yatırıma erişimden çok yatırıma hazırlıkta olduğu görüldü.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2px;background:var(--color-divider);border-top:2px solid var(--color-divider)">
+        <div style="background:var(--color-bg);padding:clamp(18px,2.2vw,26px)"><p style="margin:0;font-size:14px;line-height:1.5">Yatırım hazırlığının yeterince bilinmemesi</p></div>
+        <div style="background:var(--color-bg);padding:clamp(18px,2.2vw,26px)"><p style="margin:0;font-size:14px;line-height:1.5">Gelir modelindeki eksiklikler</p></div>
+        <div style="background:var(--color-bg);padding:clamp(18px,2.2vw,26px)"><p style="margin:0;font-size:14px;line-height:1.5">Pazar araştırması eksiklikleri</p></div>
+        <div style="background:var(--color-bg);padding:clamp(18px,2.2vw,26px)"><p style="margin:0;font-size:14px;line-height:1.5">Rekabet analizindeki eksiklikler</p></div>
+        <div style="background:var(--color-bg);padding:clamp(18px,2.2vw,26px)"><p style="margin:0;font-size:14px;line-height:1.5">Coğrafi ve pazar faktörleri</p></div>
+        <div style="background:var(--color-bg);padding:clamp(18px,2.2vw,26px)"><p style="margin:0;font-size:14px;line-height:1.5">Yatırım sunumlarındaki eksiklikler</p></div>
+        <div style="background:var(--color-bg);padding:clamp(18px,2.2vw,26px)"><p style="margin:0;font-size:14px;line-height:1.5">Yatırımcıya ulaşmadan önce yeterince hazırlık yapılmaması</p></div>
+      </div>
+    </div>
+    <hr class="hr" style="margin:0">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(48px,7vw,96px) clamp(20px,5vw,56px)">
+      <h3 style="font-size:clamp(24px,2.8vw,36px);letter-spacing:-0.025em;margin:0 0 clamp(24px,3vw,40px)">Ürünün evrimi</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px;background:var(--color-divider);border:2px solid var(--color-divider)">
+        <div style="background:var(--color-bg);padding:clamp(22px,3vw,34px)">
+          <p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-neutral-600);margin:0 0 12px">İlk konsept</p>
+          <p style="font-size:15px;line-height:1.6;color:var(--color-neutral-800);margin:0">Girişimleri analiz etmek, eksikliklerini göstermek, geliştirme önerileri sunmak ve girişimleri uygun yatırımcılarla eşleştirmek.</p>
+        </div>
+        <div style="background:var(--color-accent-100);padding:clamp(22px,3vw,34px)">
+          <p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 12px">Bugünkü yön</p>
+          <ul style="margin:0;padding-left:18px;font-size:15px;line-height:1.8;color:var(--color-neutral-800)">
+            <li>Girişimcilik eğitimleri</li>
+            <li>Girişimci toplulukları ve network</li>
+            <li>Ekip arkadaşı bulma</li>
+            <li>Sektörel kanallar</li>
+            <li>Uzman webinarları</li>
+            <li>Girişimcilik kaynakları</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <div class="ku-page" data-page="experience" hidden>
+  <section>
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(20px,5vw,56px)">
+      <p style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 clamp(16px,2vw,24px)">Deneyim</p>
+      <h2 style="font-size:clamp(30px,4.6vw,60px);letter-spacing:-0.03em;margin:0 0 clamp(32px,4vw,56px)">Gerçek ürün, gerçek ekip</h2>
+      <div class="ku-2col" style="border-top:2px solid var(--color-divider);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);gap:clamp(20px,4vw,56px);padding:clamp(28px,4vw,44px) 0;border-bottom:1px solid var(--color-divider)">
+        <div>
+          <h3 style="font-size:clamp(24px,2.6vw,32px);letter-spacing:-0.02em;margin:0 0 8px">DentalPrices</h3>
+          <p style="margin:0 0 4px;font-family:var(--font-heading);font-weight:800;font-size:15px">Jr. Developer</p>
+          <p style="margin:0;font-size:13px;color:var(--color-neutral-600)">2025 → · ~8 ay</p>
+        </div>
+        <div>
+          <p style="font-size:16px;line-height:1.65;color:var(--color-neutral-800);margin:0 0 20px;max-width:62ch">Klinikler ve hastaları bir araya getiren DentalPrices ekosisteminde geliştirici olarak çalışıyorum. Lise yıllarında gerçek bir startup ürün ortamında, canlı kullanıcıların olduğu bir kod tabanında çalışmak, ürün kararlarının teknik sonuçlarını doğrudan görmemi sağladı.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;background:var(--color-divider);border-top:1px solid var(--color-divider)">
+            <div style="background:var(--color-bg);padding:16px 0"><p style="margin:0;font-size:14px">ZMeet entegrasyonu</p></div>
+            <div style="background:var(--color-bg);padding:16px"><p style="margin:0;font-size:14px">Bug fixing</p></div>
+            <div style="background:var(--color-bg);padding:16px"><p style="margin:0;font-size:14px">Ürün geliştirme</p></div>
+            <div style="background:var(--color-bg);padding:16px"><p style="margin:0;font-size:14px">Teknik problem çözümü</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="ku-2col" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);gap:clamp(20px,4vw,56px);padding:clamp(28px,4vw,44px) 0;border-bottom:2px solid var(--color-divider)">
+        <div>
+          <h3 style="font-size:clamp(24px,2.6vw,32px);letter-spacing:-0.02em;margin:0 0 8px">YÖN · ZMovie</h3>
+          <p style="margin:0 0 4px;font-family:var(--font-heading);font-weight:800;font-size:15px">Founder · Developer</p>
+          <p style="margin:0;font-size:13px;color:var(--color-neutral-600)">2026 →</p>
+        </div>
+        <div>
+          <p style="font-size:16px;line-height:1.65;color:var(--color-neutral-800);margin:0;max-width:62ch">İki ürünün araştırma, tasarım ve geliştirme süreçlerini yürütüyorum. YÖN'de girişimcilerle ve yatırımcılarla görüşmeler; ZMovie'de Özdemir Bayraktar Bilim Merkezi'nden Recep Çolak ile işbirliği ve kurumsal görüşmeler.</p>
+        </div>
+      </div>
+    </div>
+    <hr class="hr" style="margin:0">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(20px,5vw,56px)">
+      <h3 style="font-size:clamp(22px,2.4vw,30px);letter-spacing:-0.02em;margin:0 0 24px">Eğitim</h3>
+      <div class="ku-2col" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);gap:clamp(20px,4vw,56px);border-top:1px solid var(--color-divider);padding-top:24px">
+        <div>
+          <p style="margin:0 0 4px;font-family:var(--font-heading);font-weight:800;font-size:17px">Robotekno Koleji</p>
+          <p style="margin:0;font-size:13px;color:var(--color-neutral-600)">12. sınıf · devam ediyor</p>
+        </div>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:var(--color-neutral-800);max-width:62ch">Özel Akçaabat Elektroteknik Koleji Mesleki ve Teknik Anadolu Lisesi — yazılım ve elektroteknik alanı.</p>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <div class="ku-page" data-page="achievements" hidden>
+  <section>
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(20px,5vw,56px)">
+      <p style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 clamp(16px,2vw,24px)">Başarılar</p>
+      <h2 style="font-size:clamp(30px,4.6vw,60px);letter-spacing:-0.03em;margin:0 0 clamp(32px,4vw,56px)">Proof of work</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px;background:var(--color-divider);border:2px solid var(--color-divider)">
+        <article style="background:var(--color-accent-100);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:12px">
+          <p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-accent-700);margin:0">Maestrobot 2026 Ankara</p>
+          <h3 style="font-size:clamp(22px,2.4vw,30px);letter-spacing:-0.02em;margin:0">Bölge Birinciliği</h3>
+          <p style="margin:0;font-size:15px;line-height:1.55;color:var(--color-neutral-800)">Yapay Zekâ Girişimcilik kategorisi. Sunulan proje: ZMeet.</p>
+        </article>
+        <article style="background:var(--color-bg);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:12px">
+          <p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-neutral-600);margin:0">GDG DevFest Trabzon</p>
+          <h3 style="font-size:clamp(20px,2.2vw,26px);letter-spacing:-0.02em;margin:0">Stand deneyimi</h3>
+          <p style="margin:0;font-size:15px;line-height:1.55;color:var(--color-neutral-800);flex:1">ZMeet'i topluluk önünde ilk kez sundu.</p>
+          <span class="tag tag-outline">2026 hedefi: Konuşmacı</span>
+        </article>
+        <article style="background:var(--color-bg);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:12px">
+          <p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-neutral-600);margin:0">TEDx Trabzon Üniversitesi</p>
+          <h3 style="font-size:clamp(20px,2.2vw,26px);letter-spacing:-0.02em;margin:0">Stand deneyimi</h3>
+          <p style="margin:0;font-size:15px;line-height:1.55;color:var(--color-neutral-800);flex:1">Farklı bir izleyici kitlesiyle ürün konuşması.</p>
+          <span class="tag tag-outline">2026 hedefi: Konuşmacı</span>
+        </article>
+        <article style="background:var(--color-bg);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:12px">
+          <p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-neutral-600);margin:0">GDG DevFest İstanbul</p>
+          <h3 style="font-size:clamp(20px,2.2vw,26px);letter-spacing:-0.02em;margin:0">Davetli katılımcı</h3>
+          <p style="margin:0;font-size:15px;line-height:1.55;color:var(--color-neutral-800)">İstanbul teknoloji ekosisteminde network.</p>
+        </article>
+        <article style="background:var(--color-bg);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:12px">
+          <p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-neutral-600);margin:0">Trabzon Astro TUA Hackathon</p>
+          <h3 style="font-size:clamp(20px,2.2vw,26px);letter-spacing:-0.02em;margin:0">Katılımcı</h3>
+          <p style="margin:0;font-size:15px;line-height:1.55;color:var(--color-neutral-800)">Kısıtlı sürede ekip halinde üretim.</p>
+        </article>
+        <article style="background:var(--color-bg);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:12px">
+          <p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-neutral-600);margin:0">Rafora Beyond Code</p>
+          <h3 style="font-size:clamp(20px,2.2vw,26px);letter-spacing:-0.02em;margin:0">Katılımcı · proje geliştirme</h3>
+          <p style="margin:0;font-size:15px;line-height:1.55;color:var(--color-neutral-800)">Proje geliştirme süreçleri ve mentörlük.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <div class="ku-page" data-page="writing" hidden>
+  <section>
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(20px,5vw,56px)">
+      <p style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 clamp(16px,2vw,24px)">Yazılar</p>
+      <h2 style="font-size:clamp(30px,4.6vw,60px);letter-spacing:-0.03em;margin:0 0 20px">Build in public</h2>
+      <p style="font-size:17px;line-height:1.55;color:var(--color-neutral-800);max-width:60ch;margin:0 0 clamp(28px,4vw,44px)">Ürün geliştirirken öğrendiklerimi yazıyorum. Aşağıdaki başlıklar planlanan ilk yazılar.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:clamp(24px,3vw,40px)">
+        <span class="tag tag-accent">Software</span>
+        <span class="tag tag-neutral">Entrepreneurship</span>
+        <span class="tag tag-neutral">Product</span>
+        <span class="tag tag-neutral">Research</span>
+        <span class="tag tag-neutral">Build in Public</span>
+      </div>
+      <div style="border-top:2px solid var(--color-divider)">
+        <article class="ku-writing-row" style="display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:clamp(16px,3vw,40px);align-items:baseline;padding:clamp(22px,3vw,32px) 0;border-bottom:1px solid var(--color-divider)">
+          <span style="font-size:12px;color:var(--color-neutral-600)">Software</span>
+          <h3 style="font-size:clamp(19px,2.1vw,26px);letter-spacing:-0.02em;margin:0">ZMeet'i geliştirirken öğrendiklerim</h3>
+          <span style="font-size:12px;color:var(--color-neutral-600);white-space:nowrap">Yakında</span>
+        </article>
+        <article class="ku-writing-row" style="display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:clamp(16px,3vw,40px);align-items:baseline;padding:clamp(22px,3vw,32px) 0;border-bottom:1px solid var(--color-divider)">
+          <span style="font-size:12px;color:var(--color-neutral-600)">Entrepreneurship</span>
+          <h3 style="font-size:clamp(19px,2.1vw,26px);letter-spacing:-0.02em;margin:0">YÖN'ü neden kurdum</h3>
+          <span style="font-size:12px;color:var(--color-neutral-600);white-space:nowrap">Yakında</span>
+        </article>
+        <article class="ku-writing-row" style="display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:clamp(16px,3vw,40px);align-items:baseline;padding:clamp(22px,3vw,32px) 0;border-bottom:1px solid var(--color-divider)">
+          <span style="font-size:12px;color:var(--color-neutral-600)">Research</span>
+          <h3 style="font-size:clamp(19px,2.1vw,26px);letter-spacing:-0.02em;margin:0">Girişimcilerle konuşurken öğrendiklerimiz</h3>
+          <span style="font-size:12px;color:var(--color-neutral-600);white-space:nowrap">Yakında</span>
+        </article>
+        <article class="ku-writing-row" style="display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:clamp(16px,3vw,40px);align-items:baseline;padding:clamp(22px,3vw,32px) 0;border-bottom:1px solid var(--color-divider)">
+          <span style="font-size:12px;color:var(--color-neutral-600)">Build in Public</span>
+          <h3 style="font-size:clamp(19px,2.1vw,26px);letter-spacing:-0.02em;margin:0">Lisedeyken ürün geliştirmek</h3>
+          <span style="font-size:12px;color:var(--color-neutral-600);white-space:nowrap">Yakında</span>
+        </article>
+        <article class="ku-writing-row" style="display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:clamp(16px,3vw,40px);align-items:baseline;padding:clamp(22px,3vw,32px) 0;border-bottom:2px solid var(--color-divider)">
+          <span style="font-size:12px;color:var(--color-neutral-600)">Product</span>
+          <h3 style="font-size:clamp(19px,2.1vw,26px);letter-spacing:-0.02em;margin:0">Fikirden ürüne</h3>
+          <span style="font-size:12px;color:var(--color-neutral-600);white-space:nowrap">Yakında</span>
+        </article>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <div class="ku-page" data-page="contact" hidden>
+  <section>
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(56px,9vw,120px) clamp(20px,5vw,56px)">
+      <h2 style="font-size:clamp(40px,6.5vw,88px);line-height:0.98;letter-spacing:-0.035em;margin:0 0 clamp(24px,3vw,36px)">Bir şey inşa edelim.</h2>
+      <p style="font-size:clamp(16px,1.7vw,20px);line-height:1.55;color:var(--color-neutral-800);max-width:52ch;margin:0 0 clamp(32px,4vw,56px)">Proje, işbirliği veya sadece fikir konuşmak için yazabilirsiniz.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;background:var(--color-divider);border-top:2px solid var(--color-divider)">
+        <a href="mailto:urensukursat@gmail.com" style="background:var(--color-bg);padding:clamp(22px,3vw,32px);text-decoration:none;color:var(--color-text)">
+          <p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-neutral-600);margin:0 0 10px">E-posta</p>
+          <p style="margin:0;font-family:var(--font-heading);font-weight:800;font-size:16px;word-break:break-all">urensukursat@gmail.com</p>
+        </a>
+        <a href="https://linkedin.com/in/kursat-urensu" style="background:var(--color-bg);padding:clamp(22px,3vw,32px);text-decoration:none;color:var(--color-text)">
+          <p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-neutral-600);margin:0 0 10px">LinkedIn</p>
+          <p style="margin:0;font-family:var(--font-heading);font-weight:800;font-size:16px">in/kursat-urensu</p>
+        </a>
+        <a href="https://github.com/kursat-dev" style="background:var(--color-bg);padding:clamp(22px,3vw,32px);text-decoration:none;color:var(--color-text)">
+          <p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-neutral-600);margin:0 0 10px">GitHub</p>
+          <p style="margin:0;font-family:var(--font-heading);font-weight:800;font-size:16px">kursat-dev</p>
+        </a>
+        <a href="https://instagram.com/kursat.dev" style="background:var(--color-bg);padding:clamp(22px,3vw,32px);text-decoration:none;color:var(--color-text)">
+          <p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-neutral-600);margin:0 0 10px">Instagram</p>
+          <p style="margin:0;font-family:var(--font-heading);font-weight:800;font-size:16px">@kursat.dev</p>
+          <p style="margin:6px 0 0;font-size:12px;color:var(--color-neutral-600)">Yedek: @kursat.sft</p>
+        </a>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  </main>
+
+  <footer style="border-top:2px solid var(--color-divider)">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(32px,4vw,56px) clamp(20px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(20px,3vw,40px)">
+      <div>
+        <p style="font-family:var(--font-heading);font-weight:800;font-size:17px;margin:0 0 6px">Kürşat Ürensü</p>
+        <p style="margin:0;font-size:13px;color:var(--color-neutral-600)">Software Developer · Entrepreneur · Product Builder</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:14px">
+        <a href="#" onclick="go(event, 'projects')" style="color:var(--color-text);text-decoration:none">Projeler</a>
+        <a href="#" onclick="go(event, 'experience')" style="color:var(--color-text);text-decoration:none">Deneyim</a>
+        <a href="#" onclick="go(event, 'achievements')" style="color:var(--color-text);text-decoration:none">Başarılar</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:14px">
+        <a href="https://github.com/kursat-dev" style="color:var(--color-text);text-decoration:none">GitHub</a>
+        <a href="https://linkedin.com/in/kursat-urensu" style="color:var(--color-text);text-decoration:none">LinkedIn</a>
+        <a href="https://instagram.com/kursat.dev" style="color:var(--color-text);text-decoration:none">Instagram</a>
+      </div>
+      <p style="margin:0;font-size:12px;color:var(--color-neutral-600)">© 2026 Kürşat Ürensü. Trabzon, Türkiye.</p>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
