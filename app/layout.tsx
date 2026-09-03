@@ -3,6 +3,7 @@ import { Archivo } from "next/font/google";
 
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
+import SiteJsonLd from "@/components/seo/SiteJsonLd";
 import { siteConfig } from "@/lib/site";
 
 import "./globals.css";
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang={siteConfig.lang} className={archivo.variable}>
       <body>
+        <SiteJsonLd />
         {/* accent-700 (not accent) gives 6.4:1 against the light text — AA at this
             size, where the design's accent would only reach 3.8:1.
             text-…! : the design system sets an unlayered `a { color }`, which

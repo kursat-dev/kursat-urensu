@@ -36,6 +36,33 @@ def inner(el: str, tag: str) -> str:
     return el[el.index(">") + 1:-(len(tag) + 3)]
 
 
+ABOUT_KICKER = ('<p style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;'
+                'color:var(--color-accent-700);margin:0 0 clamp(20px,3vw,32px)">Hakkında</p>')
+
+# SEO: /about is the page that should answer the query "Kürşat Ürensü kimdir?".
+# The heading and lede below are injected after the existing kicker; the design's
+# statement heading keeps its exact styling and simply becomes the following <h2>.
+# Every fact in the lede is already published elsewhere on the site (role, Trabzon,
+# DentalPrices, YÖN, ZMovie, ZConnect, ZMeet) — nothing is inferred.
+ABOUT_INTRO = (
+    '\n      <h1 style="font-size:clamp(30px,4.6vw,60px);line-height:1.05;letter-spacing:-0.03em;'
+    'margin:0 0 clamp(18px,2.5vw,24px);max-width:26ch;text-wrap:balance">Kürşat Ürensü kimdir?</h1>'
+    '\n      <p style="font-size:17px;line-height:1.65;color:var(--color-neutral-800);'
+    'max-width:62ch;margin:0 0 clamp(32px,5vw,56px);text-wrap:pretty">'
+    'Kürşat Ürensü, Trabzon merkezli bir yazılım geliştirici ve girişimci. Web ürünleri '
+    'geliştiriyor, platform kuruyor ve kullanıcı araştırması yapıyor. Şu anda DentalPrices\'ta '
+    'Jr. Developer olarak çalışıyor; paralelde YÖN ve ZMovie\'yi geliştiriyor. Daha önce ZConnect '
+    'konseptini ve ZMeet\'i çıkardı. Geliştirdiği ürünlerin tamamı '
+    '<a href="/projects">projeler sayfasında</a>.</p>'
+)
+
+
+def about_intro(html: str) -> str:
+    """Inject the "Kürşat Ürensü kimdir?" H1 + lede after the About kicker."""
+    assert html.count(ABOUT_KICKER) == 1, "About kicker anchor not found"
+    return html.replace(ABOUT_KICKER, ABOUT_KICKER + ABOUT_INTRO)
+
+
 def fix_contrast(html: str) -> str:
     """Accessibility: --color-neutral-600 on the page background is 3.85:1, below
     WCAG AA for the small text it is used on. --color-neutral-700 is the next step
@@ -93,7 +120,7 @@ home_goals = home_goals.replace("<h4 ", "<h3 ").replace("</h4>", "</h3>")
 FRAGMENTS = {
     "components/pages/HomeIntro.tsx": ("HomeIntro", home_top, False),
     "components/pages/HomeGoals.tsx": ("HomeGoals", home_goals, False),
-    "components/pages/AboutContent.tsx": ("AboutContent", pages["about"], True),
+    "components/pages/AboutContent.tsx": ("AboutContent", about_intro(pages["about"]), False),
     "components/pages/ProjectsContent.tsx": ("ProjectsContent", pages["projects"], True),
     "components/pages/YonProjectContent.tsx": ("YonProjectContent", pages["detail"], True),
     "components/pages/ExperienceContent.tsx": ("ExperienceContent", pages["experience"], True),
