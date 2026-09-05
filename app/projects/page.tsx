@@ -3,7 +3,7 @@ import ProjectsJsonLd from "@/components/seo/ProjectsJsonLd";
 import { buildMetadata } from "@/lib/seo";
 
 const description =
-  "YÖN, ZMovie, ZMeet, ZConnect ve DentalPrices — Kürşat Ürensü'nün kurduğu ve geliştirdiği ürünler, rolleri ve her birinden çıkan sonuçlar.";
+  "YÖN, ZMovie ve ZMeet — Kürşat Ürensü'nün geliştirdiği ürünler ve DentalPrices'taki profesyonel geliştirici deneyimi.";
 
 export const metadata = buildMetadata({
   title: "Projeler",

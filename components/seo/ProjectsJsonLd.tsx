@@ -2,16 +2,12 @@ import { PROJECTS } from "@/lib/projects";
 import { absoluteUrl, schemaIds, siteConfig } from "@/lib/site";
 
 import JsonLd from "./JsonLd";
+import { projectNode } from "./projectNode";
 
 /**
- * /projects as a CollectionPage holding an ItemList of the real projects, each
- * authored by the site-wide Person node — that is the link that lets a crawler
- * attribute these projects to Kürşat Ürensü.
- *
- * CreativeWork (not SoftwareApplication) on purpose: the site publishes no
- * applicationCategory, operating system, demo URL or repository for these, and
- * claiming a type whose required properties are unknown would be wrong.
- * `url` is emitted only for the project that actually has a detail page.
+ * /projects as a CollectionPage holding an ItemList of the real projects.
+ * Each item carries its own live URL and case study, and is tied to the
+ * site-wide Person node — that link is what lets a crawler attribute the work.
  */
 export default function ProjectsJsonLd({ description }: { description: string }) {
   const data = {
@@ -31,16 +27,7 @@ export default function ProjectsJsonLd({ description }: { description: string })
       itemListElement: PROJECTS.map((project, index) => ({
         "@type": "ListItem",
         position: index + 1,
-        item: {
-          "@type": "CreativeWork",
-          name: project.name,
-          description: project.description,
-          creator: { "@id": schemaIds.person },
-          author: { "@id": schemaIds.person },
-          dateCreated: project.year,
-          creativeWorkStatus: project.status,
-          ...(project.path ? { url: absoluteUrl(project.path) } : {}),
-        },
+        item: projectNode(project),
       })),
     },
   };

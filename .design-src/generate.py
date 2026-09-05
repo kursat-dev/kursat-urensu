@@ -93,6 +93,127 @@ def update_instagram(html: str) -> str:
     return html
 
 
+# ── projects: real status + verifiable links ───────────────────────────────
+# Mirrors lib/projects.ts, which feeds the structured data. verify_projects()
+# below asserts the two agree, so the visible card and the JSON-LD can never
+# drift apart.
+#
+# ZConnect is dropped entirely: it is inactive and has no site or repository.
+# DentalPrices intentionally has no repository link (private, business-owned).
+# The GitHub links are written case studies, not product source code, so they
+# are labelled "Case study" rather than "GitHub".
+PROJECT_FACTS = {
+    "YÖN": {
+        "status": "Concept · Investment Demo",
+        "website": "https://yon-dev.vercel.app/",
+        "case_study": "https://github.com/kursat-dev/case-study-yon",
+    },
+    "ZMovie": {
+        "status": "In Development",
+        "website": "http://zmovie-omega.vercel.app/",
+        "case_study": "https://github.com/kursat-dev/case-study-zmovie",
+    },
+    "ZMeet": {
+        "status": "Live",
+        "website": "https://zmeet.com.tr",
+        "case_study": "https://github.com/kursat-dev/case-study-zmeet",
+    },
+    "DentalPrices": {
+        "status": "Professional Experience",
+        "website": "https://www.dentalprices.com/tr",
+        "case_study": None,
+    },
+}
+DROPPED_PROJECTS = ("ZConnect",)
+
+LINK_ROW_STYLE = (
+    "display:flex;flex-wrap:wrap;align-items:center;gap:clamp(10px,1.5vw,18px);margin-top:18px"
+)
+EXTERNAL_LINK_STYLE = "padding-inline:0"
+
+
+def verify_projects() -> None:
+    """Fail loudly if lib/projects.ts and PROJECT_FACTS disagree."""
+    ts = open(os.path.join(ROOT, "lib", "projects.ts"), encoding="utf-8").read()
+    for name, facts in PROJECT_FACTS.items():
+        entry = re.search(
+            r'name:\s*"' + re.escape(name) + r'",(.*?)\n  \},', ts, re.S
+        )
+        assert entry, f"{name} not found in lib/projects.ts"
+        body = entry.group(1)
+        status = re.search(r'status:\s*"([^"]*)"', body)
+        assert status and status.group(1) == facts["status"], (
+            f"{name}: status mismatch — card {facts['status']!r} vs ts {status and status.group(1)!r}"
+        )
+        for key, field in (("website", "websiteUrl"), ("case_study", "caseStudyUrl")):
+            url = re.search(field + r':\s*"([^"]*)"', body)
+            found = url.group(1) if url else None
+            assert found == facts[key], f"{name}: {field} mismatch — {found!r} vs {facts[key]!r}"
+    for name in DROPPED_PROJECTS:
+        assert f'name: "{name}"' not in ts, f"{name} must not be in lib/projects.ts"
+
+
+def _article_name(article: str) -> str:
+    match = re.search(r"<h2[^>]*>(.*?)</h2>", article, re.S)
+    return re.sub(r"<[^>]+>", "", match.group(1)).strip() if match else ""
+
+
+def _links_html(facts: dict) -> str:
+    links = [("Website", facts["website"])]
+    if facts["case_study"]:
+        links.append(("Case study", facts["case_study"]))
+    anchors = "".join(
+        f'\n              <a href="{url}" class="btn btn-ghost" '
+        f'style="{EXTERNAL_LINK_STYLE}" rel="noopener noreferrer">{label} →</a>'
+        for label, url in links
+    )
+    return f'\n            <div style="{LINK_ROW_STYLE}">{anchors}\n            </div>'
+
+
+def projects_reality(html: str) -> str:
+    """Drop inactive projects, correct each status and surface the real links."""
+    if "<article" not in html:
+        return html
+
+    dropped: list[str] = []
+
+    def replace(match: re.Match) -> str:
+        article = match.group(0)
+        name = _article_name(article)
+        if name in DROPPED_PROJECTS:
+            dropped.append(name)
+            return ""
+        facts = PROJECT_FACTS.get(name)
+        if not facts:
+            return article
+        article = re.sub(
+            r'(<span class="tag[^"]*">)[^<]*(</span>)',
+            lambda m: m.group(1) + facts["status"] + m.group(2),
+            article,
+            count=1,
+        )
+        closing = "\n          </div>\n        </article>"
+        assert article.endswith(closing), f"{name}: unexpected card ending"
+        return article[: -len(closing)] + _links_html(facts) + closing
+
+    updated = re.sub(r"<article.*?</article>", replace, html, flags=re.S)
+    for name in DROPPED_PROJECTS:
+        assert f">{name}</h2>" not in updated, f"{name} card survived"
+
+    # Only the projects page loses a card, and only its intro counts them out
+    # loud — keep that number honest. Other fragments (the home timeline also
+    # uses <article>) are left alone.
+    if dropped:
+        remaining = len(re.findall(r"<article", updated))
+        number_word = {3: "Üç", 4: "Dört", 5: "Beş", 6: "Altı"}[remaining]
+        updated, count = re.subn(
+            r"\b(Üç|Dört|Beş|Altı) ürün\b", f"{number_word} ürün", updated, count=1
+        )
+        assert count == 1, "project-count sentence not found after dropping a card"
+
+    return re.sub(r"\n\s*\n\s*\n", "\n\n", updated)
+
+
 def fix_contrast(html: str) -> str:
     """Accessibility: --color-neutral-600 on the page background is 3.85:1, below
     WCAG AA for the small text it is used on. --color-neutral-700 is the next step
@@ -130,6 +251,8 @@ def write(path: str, text: str) -> None:
     open(full, "w", encoding="utf-8").write(text)
     print("wrote", path)
 
+
+verify_projects()
 
 # ---- page fragments -------------------------------------------------------
 pages: dict[str, str] = {}
@@ -175,7 +298,7 @@ IMG_NEXT = (
 
 for path, (name, frag, shift) in FRAGMENTS.items():
     html = shift_headings(frag) if shift else frag
-    jsx = anchors_to_link(to_jsx(update_instagram(fix_contrast(link_routes(html)))))
+    jsx = anchors_to_link(to_jsx(update_instagram(fix_contrast(projects_reality(link_routes(html))))))
     imports = ""
     if "<Link " in jsx:
         imports += 'import Link from "next/link";\n'
