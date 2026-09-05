@@ -46,3 +46,18 @@ header nav a[aria-current="page"] { color: var(--color-accent-700) !important; }
     scroll-behavior: auto !important;
   }
 }
+
+/* Journal category filter — CSS only, no client JavaScript.
+   Radio inputs drive the existing .seg / .seg-opt segmented control; the rules
+   below hide the cards that do not match the checked value. */
+.ku-journal:has(#journal-filter-events:checked) [data-journal-category]:not([data-journal-category="Events"]),
+.ku-journal:has(#journal-filter-building:checked) [data-journal-category]:not([data-journal-category="Building"]),
+.ku-journal:has(#journal-filter-personal:checked) [data-journal-category]:not([data-journal-category="Personal"]) {
+  display: none;
+}
+
+/* Rail scrollbar: quiet, in the design's own ink. */
+.ku-rail::-webkit-scrollbar { height: 6px; }
+.ku-rail::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-text) 25%, transparent);
+}

@@ -40,7 +40,7 @@ export default function HomeIntro() {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))" }}>
         <div style={{ padding: "clamp(20px,3vw,32px) 0", borderRight: "1px solid var(--color-divider)", paddingRight: "24px" }}>
           <div style={{ fontFamily: "var(--font-heading)", fontWeight: "800", fontSize: "clamp(28px,3.4vw,44px)", lineHeight: "1" }}>01</div>
-          <p style={{ margin: "6px 0 0", fontSize: "13px", color: "var(--color-neutral-700)" }}>Maestrobot 2026 Ankara<br />Yapay Zekâ Girişimcilik — Bölge Birinciliği</p>
+          <p style={{ margin: "6px 0 0", fontSize: "13px", color: "var(--color-neutral-700)" }}>Maestrobot 2026 Ankara<br />Lise ATSO Girişimcilik Yapay Zeka Uygulamaları Birinciliği</p>
         </div>
         <div style={{ padding: "clamp(20px,3vw,32px) 24px", borderRight: "1px solid var(--color-divider)" }}>
           <div style={{ fontFamily: "var(--font-heading)", fontWeight: "800", fontSize: "clamp(28px,3.4vw,44px)", lineHeight: "1" }}>8 ay</div>
@@ -141,7 +141,7 @@ export default function HomeIntro() {
           <span style={{ fontFamily: "var(--font-heading)", fontWeight: "800", fontSize: "clamp(15px,1.4vw,18px)", color: "var(--color-accent-700)", paddingLeft: "clamp(8px,1.5vw,16px)" }}>06</span>
           <div style={{ paddingRight: "clamp(8px,1.5vw,16px)" }}>
             <h3 style={{ fontSize: "clamp(21px,2.4vw,30px)", letterSpacing: "-0.02em", margin: "0 0 8px" }}>Tanınma — Maestrobot 2026 Ankara</h3>
-            <p style={{ margin: "0", maxWidth: "64ch", fontSize: "15px", lineHeight: "1.6", color: "var(--color-neutral-800)" }}>ZMeet ile Yapay Zekâ Girişimcilik kategorisinde bölge birinciliği.</p>
+            <p style={{ margin: "0", maxWidth: "64ch", fontSize: "15px", lineHeight: "1.6", color: "var(--color-neutral-800)" }}>ZMeet ile Lise ATSO Girişimcilik Yapay Zeka Uygulamaları Birinciliği.</p>
           </div>
         </div>
         <div className="ku-timeline-row" style={{ display: "grid", gridTemplateColumns: "clamp(56px,7vw,110px) minmax(0,1fr)", gap: "clamp(16px,3vw,40px)", padding: "clamp(22px,3vw,34px) 0", borderTop: "1px solid var(--color-divider)" }}>

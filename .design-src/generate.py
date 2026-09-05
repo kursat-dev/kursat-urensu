@@ -214,6 +214,49 @@ def projects_reality(html: str) -> str:
     return re.sub(r"\n\s*\n\s*\n", "\n\n", updated)
 
 
+# The Maestrobot award has one official name; the design copy predated it and
+# described it loosely ("Bölge Birinciliği", "Yapay Zekâ Girişimcilik
+# kategorisi"). These replacements align every mention with the official name.
+# Ordered: the home stat line goes first so the bare ">Bölge Birinciliği<"
+# replacement that follows can only match the achievements heading.
+MAESTROBOT_AWARD = "Lise ATSO Girişimcilik Yapay Zeka Uygulamaları Birinciliği"
+
+AWARD_REPLACEMENTS = [
+    (
+        "Maestrobot 2026 Ankara<br>Yapay Zekâ Girişimcilik — Bölge Birinciliği",
+        f"Maestrobot 2026 Ankara<br>{MAESTROBOT_AWARD}",
+    ),
+    (
+        "ZMeet ile Yapay Zekâ Girişimcilik kategorisinde bölge birinciliği.",
+        f"ZMeet ile {MAESTROBOT_AWARD}.",
+    ),
+    (
+        "Maestrobot 2026 Ankara'da Yapay Zekâ Girişimcilik kategorisinde bölge birinciliği getirdi.",
+        f"Maestrobot 2026 Ankara'da {MAESTROBOT_AWARD}'ni getirdi.",
+    ),
+    (
+        "Maestrobot 2026 — bölge birinciliği",
+        f"Maestrobot 2026 — {MAESTROBOT_AWARD}",
+    ),
+    (
+        ">Bölge Birinciliği<",
+        f">{MAESTROBOT_AWARD}<",
+    ),
+    # The category is now part of the award name, so this sentence loses it.
+    (
+        "Yapay Zekâ Girişimcilik kategorisi. Sunulan proje: ZMeet.",
+        "Sunulan proje: ZMeet.",
+    ),
+]
+
+
+def align_award_name(html: str) -> str:
+    """Rewrite Maestrobot award wording to the official name."""
+    for old, new in AWARD_REPLACEMENTS:
+        html = html.replace(old, new)
+    return html
+
+
 def fix_contrast(html: str) -> str:
     """Accessibility: --color-neutral-600 on the page background is 3.85:1, below
     WCAG AA for the small text it is used on. --color-neutral-700 is the next step
@@ -298,7 +341,9 @@ IMG_NEXT = (
 
 for path, (name, frag, shift) in FRAGMENTS.items():
     html = shift_headings(frag) if shift else frag
-    jsx = anchors_to_link(to_jsx(update_instagram(fix_contrast(projects_reality(link_routes(html))))))
+    jsx = anchors_to_link(
+        to_jsx(update_instagram(align_award_name(fix_contrast(projects_reality(link_routes(html))))))
+    )
     imports = ""
     if "<Link " in jsx:
         imports += 'import Link from "next/link";\n'
@@ -308,3 +353,15 @@ for path, (name, frag, shift) in FRAGMENTS.items():
     if imports:
         imports += "\n"
     write(path, component(name, jsx.rstrip("\n"), imports))
+
+
+# The old award wording must not survive anywhere in the generated components.
+STALE_AWARD_PHRASES = (
+    "Bölge Birinciliği",
+    "bölge birinciliği",
+    "Yapay Zekâ Girişimcilik",
+)
+for _path in FRAGMENTS:
+    _text = open(os.path.join(ROOT, _path), encoding="utf-8").read()
+    for _phrase in STALE_AWARD_PHRASES:
+        assert _phrase not in _text, f"{_path}: stale award wording {_phrase!r}"

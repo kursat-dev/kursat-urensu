@@ -12,8 +12,8 @@ export default function AchievementsContent() {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "2px", background: "var(--color-divider)", border: "2px solid var(--color-divider)" }}>
         <article style={{ background: "var(--color-accent-100)", padding: "clamp(24px,3vw,36px)", display: "flex", flexDirection: "column", gap: "12px" }}>
           <p style={{ fontSize: "11px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-accent-700)", margin: "0" }}>Maestrobot 2026 Ankara</p>
-          <h2 style={{ fontSize: "clamp(22px,2.4vw,30px)", letterSpacing: "-0.02em", margin: "0" }}>Bölge Birinciliği</h2>
-          <p style={{ margin: "0", fontSize: "15px", lineHeight: "1.55", color: "var(--color-neutral-800)" }}>Yapay Zekâ Girişimcilik kategorisi. Sunulan proje: ZMeet.</p>
+          <h2 style={{ fontSize: "clamp(22px,2.4vw,30px)", letterSpacing: "-0.02em", margin: "0" }}>Lise ATSO Girişimcilik Yapay Zeka Uygulamaları Birinciliği</h2>
+          <p style={{ margin: "0", fontSize: "15px", lineHeight: "1.55", color: "var(--color-neutral-800)" }}>Sunulan proje: ZMeet.</p>
         </article>
         <article style={{ background: "var(--color-bg)", padding: "clamp(24px,3vw,36px)", display: "flex", flexDirection: "column", gap: "12px" }}>
           <p style={{ fontSize: "11px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-neutral-700)", margin: "0" }}>GDG DevFest Trabzon</p>

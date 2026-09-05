@@ -1,4 +1,5 @@
 import GitHubPanel from "@/components/github/GitHubPanel";
+import JournalRail from "@/components/journal/JournalRail";
 import HomeGoals from "@/components/pages/HomeGoals";
 import HomeIntro from "@/components/pages/HomeIntro";
 import { buildMetadata } from "@/lib/seo";
@@ -19,6 +20,7 @@ export default function HomePage() {
       <HomeIntro />
       <GitHubPanel />
       <HomeGoals />
+      <JournalRail />
     </>
   );
 }

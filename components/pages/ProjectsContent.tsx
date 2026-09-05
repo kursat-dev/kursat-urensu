@@ -59,7 +59,7 @@ export default function ProjectsContent() {
             <dl style={{ margin: "20px 0 0", display: "grid", gridTemplateColumns: "auto 1fr", gap: "6px 16px", fontSize: "13px" }}>
               <dt style={{ color: "var(--color-neutral-700)" }}>Yıl</dt><dd style={{ margin: "0" }}>2025</dd>
               <dt style={{ color: "var(--color-neutral-700)" }}>Rol</dt><dd style={{ margin: "0" }}>Founder · Developer</dd>
-              <dt style={{ color: "var(--color-neutral-700)" }}>Sonuç</dt><dd style={{ margin: "0" }}>Maestrobot 2026 — bölge birinciliği</dd>
+              <dt style={{ color: "var(--color-neutral-700)" }}>Sonuç</dt><dd style={{ margin: "0" }}>Maestrobot 2026 — Lise ATSO Girişimcilik Yapay Zeka Uygulamaları Birinciliği</dd>
             </dl>
           </div>
           <div>
