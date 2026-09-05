@@ -19,7 +19,7 @@ export const siteConfig = {
     github: "https://github.com/kursat-dev",
     githubUsername: "kursat-dev",
     linkedin: "https://linkedin.com/in/kursat-urensu",
-    instagram: "https://instagram.com/kursat.dev",
+    instagram: "https://www.instagram.com/kursat.sft/",
     email: "urensukursat@gmail.com",
   },
 } as const;

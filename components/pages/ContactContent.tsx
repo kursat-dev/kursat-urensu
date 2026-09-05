@@ -22,10 +22,9 @@ export default function ContactContent() {
           <p style={{ fontSize: "11px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-neutral-700)", margin: "0 0 10px" }}>GitHub</p>
           <p style={{ margin: "0", fontFamily: "var(--font-heading)", fontWeight: "800", fontSize: "16px" }}>kursat-dev</p>
         </a>
-        <a href="https://instagram.com/kursat.dev" style={{ background: "var(--color-bg)", padding: "clamp(22px,3vw,32px)", textDecoration: "none", color: "var(--color-text)" }}>
+        <a href="https://www.instagram.com/kursat.sft/" style={{ background: "var(--color-bg)", padding: "clamp(22px,3vw,32px)", textDecoration: "none", color: "var(--color-text)" }}>
           <p style={{ fontSize: "11px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-neutral-700)", margin: "0 0 10px" }}>Instagram</p>
-          <p style={{ margin: "0", fontFamily: "var(--font-heading)", fontWeight: "800", fontSize: "16px" }}>@kursat.dev</p>
-          <p style={{ margin: "6px 0 0", fontSize: "12px", color: "var(--color-neutral-700)" }}>Yedek: @kursat.sft</p>
+          <p style={{ margin: "0", fontFamily: "var(--font-heading)", fontWeight: "800", fontSize: "16px" }}>@kursat.sft</p>
         </a>
       </div>
     </div>

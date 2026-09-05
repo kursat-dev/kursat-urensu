@@ -63,6 +63,36 @@ def about_intro(html: str) -> str:
     return html.replace(ABOUT_KICKER, ABOUT_KICKER + ABOUT_INTRO)
 
 
+OLD_INSTAGRAM = "https://instagram.com/kursat.dev"
+NEW_INSTAGRAM = "https://www.instagram.com/kursat.sft/"
+OLD_HANDLE = "@kursat.dev"
+NEW_HANDLE = "@kursat.sft"
+
+# The old "Yedek: @kursat.sft" line on /contact. Matched loosely on the colour
+# token because fix_contrast() has already rewritten neutral-600 -> neutral-700
+# by the time this runs.
+BACKUP_HANDLE_RE = re.compile(
+    r'\n\s*<p style="margin:6px 0 0;font-size:12px;'
+    r'color:var\(--color-neutral-\d00\)">Yedek: @kursat\.[a-z]+</p>'
+)
+
+
+def update_instagram(html: str) -> str:
+    """Point Instagram at the current account, @kursat.sft.
+
+    The account moved from @kursat.dev, so the link, the visible handle and the
+    now-redundant "Yedek" line are all brought in line with the live profile —
+    a handle that disagrees with the sameAs URL weakens entity matching.
+    """
+    html = html.replace(OLD_INSTAGRAM, NEW_INSTAGRAM)
+    html = html.replace(f">{OLD_HANDLE}<", f">{NEW_HANDLE}<")
+    if "Yedek: @kursat" in html:
+        html, removed = BACKUP_HANDLE_RE.subn("", html)
+        assert removed == 1, f"expected 1 backup-handle line, removed {removed}"
+        assert "Yedek: @kursat" not in html, "backup handle line survived"
+    return html
+
+
 def fix_contrast(html: str) -> str:
     """Accessibility: --color-neutral-600 on the page background is 3.85:1, below
     WCAG AA for the small text it is used on. --color-neutral-700 is the next step
@@ -145,7 +175,7 @@ IMG_NEXT = (
 
 for path, (name, frag, shift) in FRAGMENTS.items():
     html = shift_headings(frag) if shift else frag
-    jsx = anchors_to_link(to_jsx(fix_contrast(link_routes(html))))
+    jsx = anchors_to_link(to_jsx(update_instagram(fix_contrast(link_routes(html)))))
     imports = ""
     if "<Link " in jsx:
         imports += 'import Link from "next/link";\n'
