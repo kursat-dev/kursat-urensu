@@ -19,8 +19,15 @@ export type JournalCategory = "Events" | "Building" | "Personal";
 export const JOURNAL_CATEGORIES: readonly JournalCategory[] = ["Events", "Building", "Personal"];
 
 export interface JournalImage {
-  /** Path under /public. The file may not exist yet; the UI degrades safely. */
+  /** Path under /public. */
   src: string;
+  /**
+   * Intrinsic pixel size of the file. Required so the browser can reserve the
+   * right box before the image loads and so the detail page can show the whole
+   * photo instead of cropping it. Update these if a photo is replaced.
+   */
+  width: number;
+  height: number;
   /** Describes what is actually visible in the photo. No keyword stuffing. */
   alt: string;
   /** Optional short caption rendered under the image on the detail page. */
@@ -63,11 +70,15 @@ export const JOURNAL_ENTRIES: readonly JournalEntry[] = [
     relatedProjects: ["ZMeet"],
     featuredImage: {
       src: `${DIR}/maestrobot-2026/kursat-urensu-maestrobot-2026-ostim-teknik-universitesi.jpeg`,
+      width: 1200,
+      height: 1600,
       alt: "Maestrobot 2026 yarışmasında OSTİM Teknik Üniversitesi Ankara panosunun önünde masada çalışan üç yarışmacı",
     },
     images: [
       {
         src: `${DIR}/maestrobot-2026/kursat-urensu-maestrobot-2026-ekip.jpeg`,
+        width: 2268,
+        height: 4032,
         alt: "Maestrobot 2026 ekibi dört kişi olarak asansör aynasında",
       },
     ],
@@ -93,6 +104,8 @@ export const JOURNAL_ENTRIES: readonly JournalEntry[] = [
     category: "Events",
     featuredImage: {
       src: `${DIR}/astro-hackathon/kursat-urensu-astro-hackathon-yaka-karti.jpeg`,
+      width: 3024,
+      height: 4032,
       alt: "Astro Hackathon yarışmacı yaka kartı ve arkada kod yazılan dizüstü bilgisayar",
     },
     instagramUrl: "https://www.instagram.com/p/Dc4OdlmiKZp/",
@@ -113,6 +126,8 @@ export const JOURNAL_ENTRIES: readonly JournalEntry[] = [
     relatedProjects: ["ZMeet", "DentalPrices"],
     featuredImage: {
       src: `${DIR}/tedx-trabzon/kursat-urensu-tedx-trabzon-zmeet-standi.jpeg`,
+      width: 1200,
+      height: 1600,
       alt: "Kürşat Ürensü, TEDx Trabzon Üniversitesi'nde ZMeet standının önünde belgeleri incelerken",
     },
     instagramUrl: "https://www.instagram.com/p/Dc4Mfs_oClR/",
@@ -135,15 +150,21 @@ export const JOURNAL_ENTRIES: readonly JournalEntry[] = [
     relatedProjects: ["ZMeet"],
     featuredImage: {
       src: `${DIR}/devfest-trabzon-2025/kursat-urensu-devfest-trabzon-2025-zmeet-standi.jpeg`,
+      width: 1200,
+      height: 1600,
       alt: "GDG DevFest Trabzon 2025'te ZMeet standının önünde ekip; arkada ZMeet afişi, masada ZMeet arayüzü açık ekran",
     },
     images: [
       {
         src: `${DIR}/devfest-trabzon-2025/kursat-urensu-devfest-trabzon-2025-android-maskot.jpeg`,
+        width: 918,
+        height: 2040,
         alt: "GDG DevFest Trabzon 2025'te ZMeet standının önünde şişme Android maskot kostümü",
       },
       {
         src: `${DIR}/devfest-trabzon-2025/devfest-trabzon-2025-sponsor-yaka-karti.jpeg`,
+        width: 918,
+        height: 2040,
         alt: "GDG DevFest Trabzon 2025 sponsor yaka kartı: Kürşat Ürensü, Bronze Sponsor — Özel RoboTekno Koleji, ZMeet",
       },
     ],
@@ -160,6 +181,8 @@ export const JOURNAL_ENTRIES: readonly JournalEntry[] = [
     category: "Events",
     featuredImage: {
       src: `${DIR}/devfest-istanbul-2025/devfest-istanbul-2025-yaka-kartlari.jpeg`,
+      width: 1512,
+      height: 2016,
       alt: "GDG DevFest İstanbul 2025'e ait üç katılımcı yaka kartı; ortadaki Kürşat Ürensü adına",
     },
     body: [
@@ -175,11 +198,15 @@ export const JOURNAL_ENTRIES: readonly JournalEntry[] = [
     category: "Personal",
     featuredImage: {
       src: `${DIR}/personal/kursat-urensu-siyah-polo.jpeg`,
+      width: 1148,
+      height: 2040,
       alt: "Kürşat Ürensü'nün ayna karşısında siyah polo tişörtle çektiği fotoğraf",
     },
     images: [
       {
         src: `${DIR}/personal/kursat-urensu-siyah-tisort.jpeg`,
+        width: 1148,
+        height: 2040,
         alt: "Kürşat Ürensü'nün ayna karşısında siyah tişörtle çektiği fotoğraf",
       },
     ],

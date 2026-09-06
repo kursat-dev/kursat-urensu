@@ -79,8 +79,9 @@ export default async function JournalEntryPage({ params }: { params: Promise<Par
             <figure style={{ margin: "0" }}>
               <JournalImage
                 image={entry.featuredImage}
-                ratio="3/2"
-                sizes="(max-width: 1240px) 92vw, 1128px"
+                variant="full"
+                maxHeight="min(72vh, 660px)"
+                sizes="(max-width: 640px) 92vw, (max-width: 1240px) 70vw, 660px"
                 priority
               />
               <figcaption>{entry.featuredImage.alt}</figcaption>
@@ -106,7 +107,12 @@ export default async function JournalEntryPage({ params }: { params: Promise<Par
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,300px),1fr))", gap: "clamp(16px,2vw,28px)" }}>
                 {gallery.map((image) => (
                   <figure key={image.src} style={{ margin: "0" }}>
-                    <JournalImage image={image} sizes="(max-width: 880px) 92vw, 45vw" />
+                    <JournalImage
+                      image={image}
+                      variant="full"
+                      maxHeight="min(60vh, 520px)"
+                      sizes="(max-width: 880px) 92vw, 45vw"
+                    />
                     <figcaption>{image.caption ?? image.alt}</figcaption>
                   </figure>
                 ))}
